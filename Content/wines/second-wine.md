@@ -1,13 +1,21 @@
 ---
 wine.id: 1
+
 wine.name: wine2
 wine.vintage: 2000
-wine.rank: 0.75
+wine.grapes: grenache, test
+wine.region: test region
 wine.color: white
-wine.winery: winery 2
+wine.winery: test winery
+wine.alcoholContent: 11
 
+wine.rank: 0.75
+
+title: Wine 2
 description: Post about wine2
+date: 2020-12-1 12:00
 image: images/SantaDuc.png
+
 ---
 
 # Wine 2

@@ -17,13 +17,18 @@ extension Node where Context == HTML.BodyContext {
     }
 
     static func header(for context: PublishingContext<JustABunchOfGrapes>, selectedSection: JustABunchOfGrapes.SectionID?) -> Node {
-        let sectionIDs = JustABunchOfGrapes.SectionID.allCases
-
-        return .header(
+        .header(
             .content(
-                .a(.class("site-name"), .href("/"), .text(context.site.name)),
+                .a(
+                    .href("/"),
+                    .div(
+                        .class("site-name"),
+                        .logo(),
+                        .text(context.site.name)
+                    )
+                ),
                 .nav(
-                    .ul(.forEach(sectionIDs) { section in
+                    .ul(.forEach(JustABunchOfGrapes.SectionID.allCases) { section in
                         .li(.a(
                             .class(section == selectedSection ? "selected" : ""),
                             .href(context.sections[section].path),
@@ -37,6 +42,7 @@ extension Node where Context == HTML.BodyContext {
 
     static func footer<T: Website>(for _: T) -> Node {
         .footer(
+            .logo(),
             .p(
                 .text("Last generated on \(Date.nowFormatted)")
             ),
@@ -53,6 +59,13 @@ extension Node where Context == HTML.BodyContext {
             )
         )
     }
+
+    static func logo() -> Node {
+        .div(
+            .class("logo"),
+            .img(.src(Path("Grapes.svg")))
+        )
+    }
 }
 
 // MARK: - Wine Page
@@ -67,11 +80,11 @@ extension Node where Context == HTML.BodyContext {
             .class("wine-dossier"),
             .caption(.text("Dossier")),
             .tr(.th(.text("Vintage")), .td(.text("\(wine.vintage)"))),
-            .tr(.th(text("grapes")), .td(.text(wine.grapes?.joined(separator: ", ") ?? "N/A"))),
-            .tr(.th(text("region")), .td(.text(wine.region ?? "N/A"))),
-            .tr(.th(text("color")), .td(.text("\(wine.color)"))),
-            .tr(.th(text("winery")), .td(.text(wine.winery ?? "N/A"))),
-            .tr(.th(text("alcoholContent")), .td(.text("\(wine.alcoholContent)")))
+            .tr(.th(text("Grapes")), .td(.text(wine.grapes.joined(separator: ", ")))),
+            .tr(.th(text("Region")), .td(.text(wine.region))),
+            .tr(.th(text("Color")), .td(.text("\(wine.color)"))),
+            .tr(.th(text("Winery")), .td(.text(wine.winery))),
+            .tr(.th(text("Alcohol Content")), .td(.text("\(wine.alcoholContent)")))
         )
     }
 
@@ -156,22 +169,27 @@ extension Node where Context == HTML.BodyContext {
         .ul(
             .class("comparisons-list"),
             try .forEach(comparisonItems) { item in
-                let wines = try context.winesItems(withIds: item.metadata.comparison!.wineIds).map { $0.metadata.wine! }
+                let wines = try context.winesItems(withIds: item.metadata.comparison!.wineIds)
 
                 return .li(
                     .div(
                         .class("comparison-item"),
-                        .h1(.a(
-                            .href(item.path),
-                            .text(item.title)
-                        )),
-                        .p(.text(item.description)),
-                        .span(
-                            .strong("Comparing: "),
-                            .text("\(wines.map(\.name).joined(separator: ", "))")
+                        .img(
+                            .class("comparee-1"),
+                            .src(wines.first!.imagePath!)
+                        ),
+                        .div(.class("content"),
+                             .h2(.a(
+                                 .href(item.path),
+                                 .text(item.title)
+                             )),
+                             .p(.text(item.description))),
+                        .img(
+                            .class("comparee-2"),
+                            .src(wines.last!.imagePath!)
                         )
-                    )
-                )
+
+                    ))
             }
         )
     }

@@ -41,12 +41,10 @@ extension Theme where Site == JustABunchOfGrapes {
         Theme(
             htmlFactory: WineThemeHTMLFactory(),
             resourcePaths: [
-                "Resources/WineTheme/styles.css",
-                "Resources/WineTheme/fonts.css",
-                "Resources/WineTheme/PTSans-Regular.ttf",
-                "Resources/WineTheme/PTSans-Italic.ttf",
-                "Resources/WineTheme/PTSans-Bold.ttf",
-                "Resources/WineTheme/PTSans-BoldItalic.ttf",
+                "Resources/WineTheme/PTSans/PTSans-Regular.ttf",
+                "Resources/WineTheme/PTSans/PTSans-Italic.ttf",
+                "Resources/WineTheme/PTSans/PTSans-Bold.ttf",
+                "Resources/WineTheme/PTSans/PTSans-BoldItalic.ttf",
             ]
         )
     }

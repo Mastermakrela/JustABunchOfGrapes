@@ -1,15 +1,21 @@
 ---
 wine.id: 0
+
 wine.name: wine1
 wine.vintage: 2000
-wine.rank: 0.25
+wine.grapes: grenache, test
+wine.region: test region
 wine.color: red
-wine.winery: winery 1
+wine.winery: test winery
+wine.alcoholContent: 12.5
+
+wine.rank: 0.25
 
 title: Wine 1
 description: Post about wine1
-date:
+date: 2020-12-1 12:00
 image: images/SantaDuc.png
+
 ---
 
 My first post's text.

@@ -4,6 +4,7 @@ comparison.date: 2020-12-1 12:00
 comparison.wineIds: 0, 1
 
 description: First comparison description
+
 ---
 
 First comparison text.

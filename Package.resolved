@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "MinifyCSSPublishPlugin",
+        "repositoryURL": "https://github.com/labradon/minifycsspublishplugin",
+        "state": {
+          "branch": null,
+          "revision": "131aee39b27e7d369193ae7f1834bfbc1d63fdad",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "Plot",
         "repositoryURL": "https://github.com/johnsundell/plot.git",
         "state": {
@@ -44,6 +53,15 @@
           "branch": "ChangeLocalServer",
           "revision": "b14d2bea9796ceb9e1247de65c6f7c436292385a",
           "version": null
+        }
+      },
+      {
+        "package": "SassPublishPlugin",
+        "repositoryURL": "https://github.com/hejki/sasspublishplugin",
+        "state": {
+          "branch": null,
+          "revision": "69c4bfd316e474c85a8ebac589ef91d0baa5a546",
+          "version": "0.1.0"
         }
       },
       {
@@ -83,12 +101,30 @@
         }
       },
       {
+        "package": "libsass",
+        "repositoryURL": "https://github.com/robinwalterfit/Swift-libsass.git",
+        "state": {
+          "branch": null,
+          "revision": "9d48a04eda5a98d7a934ce40249a7275d11f3236",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "swift-nio",
         "repositoryURL": "https://github.com/apple/swift-nio.git",
         "state": {
           "branch": null,
           "revision": "2bae395344d41710dffab456265d534d7dc34ab8",
           "version": "2.25.0"
+        }
+      },
+      {
+        "package": "Sass",
+        "repositoryURL": "https://github.com/robinwalterfit/Swift-Sass.git",
+        "state": {
+          "branch": null,
+          "revision": "6a2ba673e1f0bdbdbf3e2eb871229bc0e7354fbe",
+          "version": "1.0.1"
         }
       }
     ]

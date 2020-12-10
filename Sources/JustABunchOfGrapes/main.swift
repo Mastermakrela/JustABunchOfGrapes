@@ -1,6 +1,8 @@
 import Foundation
+import MinifyCSSPublishPlugin
 import Plot
 import Publish
+import SassPublishPlugin
 
 // This type acts as the configuration for your website.
 struct JustABunchOfGrapes: Website {
@@ -20,16 +22,33 @@ struct JustABunchOfGrapes: Website {
     // Update these properties to configure your website:
     var url = URL(string: "https://your-website-url.com")!
     var name = "Just a Bunch of Grapes"
-    var description = "A description of JustABunchOfGrapes"
+    var description = """
+        A description of JustABunchOfGrapes
+    """
     var language: Language { .english }
-    var imagePath: Path? { nil }
+    var imagePath: Path? = nil
 }
 
-// This will generate your website using the built-in Foundation theme:
 try JustABunchOfGrapes()
-    .publish(
-        withTheme: .wineTheme,
-        additionalSteps: [
-            // check all wines have iages
-        ]
-    )
+    .publish(using: [
+        .optional(.copyResources()),
+        .addMarkdownFiles(),
+        .sortItems(by: \.date, order: .descending),
+        .generateHTML(withTheme: .wineTheme, indentation: .none),
+        .generateSiteMap(indentedBy: .none),
+        .installPlugin(
+            .compileSass(
+                sassFilePath: "Resources/WineTheme/styles.scss",
+                cssFilePath: "styles.css",
+                compressed: true
+            )
+        ),
+        .installPlugin(
+            .compileSass(
+                sassFilePath: "Resources/WineTheme/fonts.scss",
+                cssFilePath: "fonts.css",
+                compressed: true
+            )
+        ),
+        .installPlugin(.minifyCSS()),
+    ])

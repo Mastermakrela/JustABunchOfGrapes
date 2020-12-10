@@ -6,8 +6,10 @@
     box-sizing: border-box;
 }
 
+$bodyBg: #fff;
+
 body {
-    background: #fff;
+    background: $bodyBg;
     color: #000;
     font-family: PTSans, Helvetica, Arial;
     text-align: center;

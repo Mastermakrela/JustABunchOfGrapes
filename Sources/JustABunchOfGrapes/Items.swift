@@ -21,11 +21,11 @@ struct Wine: WebsiteItemMetadata {
 
     let name: String
     let vintage: Int
-    let grapes: [String]?
-    let region: String?
+    let grapes: [String]
+    let region: String
     let color: WineColor
-    let winery: String?
-    let alcoholContent: Double?
+    let winery: String
+    let alcoholContent: Double
 
     let rank: Double
 }
