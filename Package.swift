@@ -8,16 +8,15 @@ let package = Package(
         .executable(
             name: "JustABunchOfGrapes",
             targets: ["JustABunchOfGrapes"]
-        )
+        ),
     ],
     dependencies: [
-//        .package(name: "Publish", url: "https://github.com/johnsundell/publish.git", from: "0.6.0")
-        .package(path: "/Users/mastermakrela/Projects/CommunityWork/Publish")
+        .package(name: "Publish", url: "https://github.com/Mastermakrela/publish.git", .branch("ChangeLocalServer")),
     ],
     targets: [
         .target(
             name: "JustABunchOfGrapes",
             dependencies: ["Publish"]
-        )
+        ),
     ]
 )

@@ -1,6 +1,6 @@
 import Foundation
-import Publish
 import Plot
+import Publish
 
 // This type acts as the configuration for your website.
 struct JustABunchOfGrapes: Website {
@@ -13,8 +13,8 @@ struct JustABunchOfGrapes: Website {
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
-        // Add any site-specific metadata that you want to use here.
-        
+        let wine: Wine?
+        let comparison: Comparison?
     }
 
     // Update these properties to configure your website:
@@ -29,5 +29,7 @@ struct JustABunchOfGrapes: Website {
 try JustABunchOfGrapes()
     .publish(
         withTheme: .wineTheme,
-        additionalSteps: []
+        additionalSteps: [
+            // check all wines have iages
+        ]
     )

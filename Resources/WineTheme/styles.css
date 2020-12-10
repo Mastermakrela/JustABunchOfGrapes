@@ -1,9 +1,4 @@
-
-/**
-*  Publish Foundation theme
-*  Copyright (c) John Sundell 2019
-*  MIT license, see LICENSE file for details
-*/
+@import url("fonts.css");
 
 * {
     margin: 0;
@@ -14,11 +9,11 @@
 body {
     background: #fff;
     color: #000;
-    font-family: Helvetica, Arial;
+    font-family: PTSans, Helvetica, Arial;
     text-align: center;
 }
 
-.wrapper {
+.wrapper, .content {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -125,9 +120,9 @@ a {
     display: inline-block;
 }
 
-.content {
-    margin-bottom: 40px;
-}
+/*.content {*/
+/*    margin-bottom: 40px;*/
+/*}*/
 
 .browse-all {
     display: block;
@@ -167,4 +162,46 @@ footer {
     .wrapper {
         padding: 40px 20px;
     }
+}
+
+
+
+
+article.wine  {
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 2fr;*/
+/*    grid-template-rows: 2fr 1fr;*/
+/*    column-gap: 16px;*/
+/*    row-gap: 16px;*/
+/*    grid-template-areas:*/
+/*        "image description"*/
+/*        "stats description";*/
+    
+/*    background: green;*/
+}
+
+article.wine > .stats {
+/*    grid-area: stats;*/
+}
+
+article.wine > .stats {
+/*    padding: 10px;*/
+}
+
+article.wine > .stats > ul > li {
+/*    padding: 10px 20px;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+}
+
+article.wine > .description {
+/*    grid-area: description;*/
+}
+
+.wine-image > img {
+    height: 300px;
+}
+
+img {
+    height: 300px;
 }
