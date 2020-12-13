@@ -66,6 +66,7 @@ struct WineThemeHTMLFactory: HTMLFactory {
 
         if item.metadata.wine != nil {
             body = .article(.class("wine"),
+                            .articleHeader(for: item),
                             .wineHeader(wineItem: item),
                             .div(
                                 .class("description"),
@@ -76,7 +77,7 @@ struct WineThemeHTMLFactory: HTMLFactory {
             let wines = try context.winesItems(withIds: comparison.wineIds)
 
             body = .article(.class("comparison"),
-                            .comparisonHeader(comparisonItem: item),
+                            .articleHeader(for: item),
                             .div(
                                 .class("description"),
                                 .contentBody(item.body)

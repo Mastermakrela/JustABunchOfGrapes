@@ -71,6 +71,15 @@ extension Node where Context == HTML.BodyContext {
     static func logo() -> Node {
         .img(.class("logo"), .src(Path("Grapes.svg")))
     }
+
+    static func articleHeader(for item: Item<JustABunchOfGrapes>) -> Node {
+        .div(
+            .class("header"),
+            .h1(.text(item.title)),
+            .span(.class("date"), .text(item.date.formatted))
+        )
+    }
+
 }
 
 // MARK: - Wine Page
@@ -95,7 +104,6 @@ extension Node where Context == HTML.BodyContext {
 
     static func wineHeader(wineItem: Item<JustABunchOfGrapes>) -> Node {
         .group(
-            .h1(.class("wine-title"), .text(wineItem.title)),
             .wineImage(path: wineItem.imagePath!),
             .wineInfo(wine: wineItem.metadata.wine!)
         )
@@ -114,24 +122,19 @@ extension Node where Context == HTML.ListContext {
 // MARK: - Comparison Page
 
 extension Node where Context == HTML.BodyContext {
-    static func comparisonHeader(comparisonItem: Item<JustABunchOfGrapes>) -> Node {
-        .div(
-            .class("comparison-header"),
-            .p(.h1(.text(comparisonItem.title))),
-            .p(.text(comparisonItem.date.formatted))
-        )
-    }
-
     private static func comparee(wineItem: Item<JustABunchOfGrapes>) -> Node {
-        .a(
-            .href(wineItem.path),
+        
             .div(
                 .class("comparee"),
+                
                 .img(.src(wineItem.imagePath!)),
-                .p(.text(wineItem.metadata.wine!.name)),
+                .a(
+            .href(wineItem.path),
+                .p(.class("wine-name"),.text(wineItem.metadata.wine!.name))),
                 .wineInfo(wine: wineItem.metadata.wine!)
+                
             )
-        )
+        
     }
 
     static func comparees(wineItems: [Item<JustABunchOfGrapes>]) -> Node {

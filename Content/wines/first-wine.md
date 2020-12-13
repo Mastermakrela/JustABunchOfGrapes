@@ -3,7 +3,7 @@ wine.id: 0
 
 wine.name: wine1
 wine.vintage: 2000
-wine.grapes: grenache, test
+wine.grapes: grenache, test, grenache, test, grenache, test, grenache, test
 wine.region: test region
 wine.color: red
 wine.winery: test winery
