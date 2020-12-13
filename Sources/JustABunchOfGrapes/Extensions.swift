@@ -15,10 +15,6 @@ extension Array where Element == UInt {
     }
 }
 
-extension Path {
-    static var defaultWineImage: Path { "missingWine.jpg" }
-}
-
 extension PublishingContext where Site == JustABunchOfGrapes {
     var wines: [Wine] {
         sections

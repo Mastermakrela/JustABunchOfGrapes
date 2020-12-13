@@ -15,7 +15,7 @@ struct WineThemeHTMLFactory: HTMLFactory {
             .head(for: index, on: context.site),
             .body(
                 .header(for: context, selectedSection: nil),
-                .content(
+                .main(
                     .div(.text("latest wines")),
                     .div(.text("latest comparisons")),
                     .div(
@@ -52,7 +52,7 @@ struct WineThemeHTMLFactory: HTMLFactory {
             .head(for: section, on: context.site),
             .body(
                 .header(for: context, selectedSection: section.id),
-                .content(
+                .main(
                     section.body.node,
                     body
                 ),
@@ -92,7 +92,7 @@ struct WineThemeHTMLFactory: HTMLFactory {
             .head(for: item, on: context.site),
             .body(
                 .header(for: context, selectedSection: item.sectionID),
-                .content(body),
+                .main(body),
                 .footer(for: context.site)
             )
         )
@@ -105,7 +105,7 @@ struct WineThemeHTMLFactory: HTMLFactory {
             .body(
                 .header(for: context, selectedSection: nil),
                 .h1(.text("PAGE")),
-                .content(.contentBody(page.body)),
+                .main(.contentBody(page.body)),
                 .footer(for: context.site)
             )
         )

@@ -40,39 +40,44 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
-    static func footer<T: Website>(for _: T) -> Node {
+    static func footer<Site: Website>(for site: Site) -> Node {
         .footer(
-            .logo(),
-            .p(
-                .text("Last generated on \(Date.nowFormatted)")
-            ),
-            .p(.a(
-                .text("RSS feed"),
-                .href("/feed.rss")
-            )),
-            .p(
-                .text("Generated using "),
-                .a(
-                    .text("Publish"),
-                    .href("https://github.com/johnsundell/publish")
+            .content(
+                .div(
+                    .p(
+                        .text("Last generated on \(Date.nowFormatted)")
+                    ),
+                    .p(.a(
+                        .text("RSS feed"),
+                        .href("/feed.rss")
+                    )),
+                    .p(
+                        .text("Generated using "),
+                        .a(
+                            .text("Publish"),
+                            .href("https://github.com/johnsundell/publish")
+                        )
+                    )
+                ),
+                .div(
+                    .class("site-name"),
+                    .logo(),
+                    .text(site.name)
                 )
             )
         )
     }
 
     static func logo() -> Node {
-        .div(
-            .class("logo"),
-            .img(.src(Path("Grapes.svg")))
-        )
+        .img(.class("logo"), .src(Path("Grapes.svg")))
     }
 }
 
 // MARK: - Wine Page
 
 extension Node where Context == HTML.BodyContext {
-    static func wineImage(path: Path?) -> Node {
-        .div(.class("wine-image"), .img(.src(path ?? .defaultWineImage)))
+    static func wineImage(path: Path) -> Node {
+        .img(.class("wine-image"), .src(path))
     }
 
     static func wineInfo(wine: Wine) -> Node {
@@ -91,7 +96,7 @@ extension Node where Context == HTML.BodyContext {
     static func wineHeader(wineItem: Item<JustABunchOfGrapes>) -> Node {
         .group(
             .h1(.class("wine-title"), .text(wineItem.title)),
-            .wineImage(path: wineItem.imagePath),
+            .wineImage(path: wineItem.imagePath!),
             .wineInfo(wine: wineItem.metadata.wine!)
         )
     }
@@ -122,7 +127,7 @@ extension Node where Context == HTML.BodyContext {
             .href(wineItem.path),
             .div(
                 .class("comparee"),
-                .img(.src(wineItem.imagePath ?? .defaultWineImage)),
+                .img(.src(wineItem.imagePath!)),
                 .p(.text(wineItem.metadata.wine!.name)),
                 .wineInfo(wine: wineItem.metadata.wine!)
             )
@@ -147,8 +152,9 @@ extension Node where Context == HTML.BodyContext {
                 .li(
                     .div(
                         .class("wine-item"),
-                        .wineImage(path: item.imagePath),
+                        .wineImage(path: item.imagePath!),
                         .div(
+                            .class("description"),
                             .h1(.a(
                                 .href(item.path),
                                 .text(item.title)
@@ -178,8 +184,8 @@ extension Node where Context == HTML.BodyContext {
                             .class("comparee-1"),
                             .src(wines.first!.imagePath!)
                         ),
-                        .div(.class("content"),
-                             .h2(.a(
+                        .div(.class("description"),
+                             .h1(.a(
                                  .href(item.path),
                                  .text(item.title)
                              )),
@@ -205,12 +211,15 @@ extension Node where Context == HTML.BodyContext {
                 .li(
                     .div(
                         .class("ranking-item"),
-                        .h1(.a(
-                            .href(wineItem.path),
-                            .text(wineItem.title)
-                        )),
-                        .p(.text(wineItem.description)),
-                        .img(.src(wineItem.imagePath ?? .defaultWineImage))
+                        .div(
+                            .class("description"),
+                            .h1(.a(
+                                .href(wineItem.path),
+                                .text(wineItem.title)
+                            )),
+                            .p(.text(wineItem.description))
+                        ),
+                        .img(.src(wineItem.imagePath!))
                     )
                 )
             }

@@ -31,6 +31,9 @@ struct JustABunchOfGrapes: Website {
 
 try JustABunchOfGrapes()
     .publish(using: [
+        // check wine ids unique
+        // check all wines have photos etc.
+
         .optional(.copyResources()),
         .addMarkdownFiles(),
         .sortItems(by: \.date, order: .descending),

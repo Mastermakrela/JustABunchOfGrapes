@@ -13,9 +13,8 @@ wine.rank: 0.25
 
 title: Wine 1
 description: Post about wine1
-date: 2020-12-1 12:00
-image: images/SantaDuc.png
-
+date: 2020-12-1 11:00
+image: images/wine1.png
 ---
 
 My first post's text.
