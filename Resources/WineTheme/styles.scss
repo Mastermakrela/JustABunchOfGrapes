@@ -432,3 +432,46 @@ article {
     }
   }
 }
+
+// MARK: - Home Page
+
+.latest {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 32px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-item {
+    padding: 20px;
+    background: #000;
+    border-radius: 1rem;
+
+    img {
+      max-width: 100%;
+      border-radius: 1rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 8px 0;
+    }
+
+    .date {
+      font-size: 0.8rem;
+      color: #8a8a8a;
+      margin: 0;
+    }
+
+    @media (prefers-color-scheme: light) {
+      background: #eee;
+    }
+  }
+}
+
+.home-description {
+  margin-bottom: 40px;
+}

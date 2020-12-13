@@ -79,7 +79,6 @@ extension Node where Context == HTML.BodyContext {
             .span(.class("date"), .text(item.date.formatted))
         )
     }
-
 }
 
 // MARK: - Wine Page
@@ -123,18 +122,16 @@ extension Node where Context == HTML.ListContext {
 
 extension Node where Context == HTML.BodyContext {
     private static func comparee(wineItem: Item<JustABunchOfGrapes>) -> Node {
-        
-            .div(
-                .class("comparee"),
-                
-                .img(.src(wineItem.imagePath!)),
-                .a(
-            .href(wineItem.path),
-                .p(.class("wine-name"),.text(wineItem.metadata.wine!.name))),
-                .wineInfo(wine: wineItem.metadata.wine!)
-                
-            )
-        
+        .div(
+            .class("comparee"),
+
+            .img(.src(wineItem.imagePath!)),
+            .a(
+                .href(wineItem.path),
+                .p(.class("wine-name"), .text(wineItem.metadata.wine!.name))
+            ),
+            .wineInfo(wine: wineItem.metadata.wine!)
+        )
     }
 
     static func comparees(wineItems: [Item<JustABunchOfGrapes>]) -> Node {
@@ -226,6 +223,51 @@ extension Node where Context == HTML.BodyContext {
                     )
                 )
             }
+        )
+    }
+}
+
+// MARK: - Homepage
+
+extension Node where Context == HTML.BodyContext {
+    static func latestWines(in context: PublishingContext<JustABunchOfGrapes>) throws -> Node {
+        let latestWines = try context.winesItems().sorted { $0.date > $1.date }.prefix(3)
+
+        return
+            .group(
+                .h1(.text("Latest Wines")),
+                .div(.class("latest"),
+                     .forEach(latestWines) { wineItem in
+                         .div(
+                             .class("latest-item"),
+                             .img(.src(wineItem.imagePath!)),
+                             .a(
+                                 .href(wineItem.path),
+                                 .h2(.text(wineItem.title))
+                             ),
+                             .p(.class("date"), .text(wineItem.date.formatted))
+                         )
+                     })
+            )
+    }
+
+    static func latestComparisons(in context: PublishingContext<JustABunchOfGrapes>) throws -> Node {
+        let latestComparisons = try context.comparisonItems().sorted { $0.date < $1.date }.prefix(3)
+
+        return .group(
+            .h1(.text("Latest Comparisons")),
+            .div(.class("latest"),
+                 .forEach(latestComparisons) { comparisonItem in
+                     .div(
+                         .class("latest-item"),
+                         .img(.src(comparisonItem.imagePath!)),
+                         .a(
+                             .href(comparisonItem.path),
+                             .h2(.text(comparisonItem.title))
+                         ),
+                         .p(.class("date"), .text(comparisonItem.date.formatted))
+                     )
+                 })
         )
     }
 }

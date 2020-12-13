@@ -2,6 +2,8 @@
 title:
 ---
 
-# Welcome to JustABunchOfGrapes!
+# What is <em>Just a Bunch of Grapes</em>?
 
-test some text here
+loremloremloremlorem loremlorem loremloremlorem loremloremloremloremlorem loremlorem loremloremlorem lorem
+loremloremloremlorem loremlorem loremloremlorem lorem
+loremloremloremlorem loremlorem loremloremlorem lorem

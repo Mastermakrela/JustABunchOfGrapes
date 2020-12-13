@@ -16,10 +16,10 @@ struct WineThemeHTMLFactory: HTMLFactory {
             .body(
                 .header(for: context, selectedSection: nil),
                 .main(
-                    .div(.text("latest wines")),
-                    .div(.text("latest comparisons")),
+                    try .latestWines(in: context),
+                    try .latestComparisons(in: context),
                     .div(
-                        .class("description"),
+                        .class("home-description"),
                         index.content.body.node
                     )
                 ),

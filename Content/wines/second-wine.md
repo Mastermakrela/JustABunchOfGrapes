@@ -14,7 +14,7 @@ wine.rank: 0.75
 title: Wine 2
 description: Post about wine2
 date: 2020-12-1 12:00
-image: images/wine2.png
+image: images/wines/wine2.png
 ---
 
 My first post's text.

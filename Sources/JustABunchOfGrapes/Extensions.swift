@@ -30,6 +30,12 @@ extension PublishingContext where Site == JustABunchOfGrapes {
             .filter { withIds.isEmpty || withIds.contains($0.metadata.wine!.id) }
             .sorted { $0.metadata.wine!.rank < $1.metadata.wine!.rank }
     }
+
+    func comparisonItems() throws -> [Item<Site>] {
+        sections
+            .first { $0.id == .comparisons }!
+            .items
+    }
 }
 
 extension Theme where Site == JustABunchOfGrapes {
